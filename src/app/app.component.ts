@@ -27,6 +27,7 @@ export class AppComponent implements OnInit {
   public responseValue: any;
   public arrayList = [7, 9, 5, 6, 4, 5];
   public responseApi: any = [];
+  public users = [];
 
   @ViewChild('div', { static: true }) div: ElementRef;
 
@@ -39,7 +40,20 @@ export class AppComponent implements OnInit {
     private ngZone: NgZone
   ) {}
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.users = [
+      {
+        name: 'Ramesh',
+        id: 1,
+      },
+      { name: 'Saranya', id: 2 },
+      { name: 'Sudhar', id: 3 },
+      { name: 'Sudharshini', id: 4 },
+      { name: 'Saran', id: 5 },
+    ];
+
+    var test = this.users.map((data) => console.log(data.name));
+
     this.service.getData().subscribe((res) => {
       console.log('response..' + res);
       this.responseValue = res;
@@ -61,9 +75,9 @@ export class AppComponent implements OnInit {
     var result = new Set(results2);
     console.log(...result);
 
-    this.ngZone.runOutsideAngular(() => {
-      this.changeColor();
-    });
+    // this.ngZone.runOutsideAngular(() => {
+    //   this.changeColor();
+    // });
 
     this.service.getJson().subscribe((res) => {
       var res = res;
