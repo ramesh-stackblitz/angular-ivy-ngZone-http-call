@@ -10,7 +10,6 @@ import { ServiceAppService } from './service-app.service';
 import { Subscriber } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import {
-  FormControl,
   FormGroup,
   FormControlName,
   FormBuilder,
@@ -41,19 +40,6 @@ export class AppComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.users = [
-      {
-        name: 'Ramesh',
-        id: 1,
-      },
-      { name: 'Saranya', id: 2 },
-      { name: 'Sudhar', id: 3 },
-      { name: 'Sudharshini', id: 4 },
-      { name: 'Saran', id: 5 },
-    ];
-
-    var test = this.users.map((data) => console.log(data.name));
-
     this.service.getData().subscribe((res) => {
       console.log('response..' + res);
       this.responseValue = res;
