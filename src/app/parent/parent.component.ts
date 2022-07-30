@@ -9,17 +9,17 @@ import {
   selector: 'app-parent',
   templateUrl: './parent.component.html',
   styleUrls: ['./parent.component.css'],
-  changeDetection: ChangeDetectionStrategy.OnPush,
+  //changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ParentComponent implements OnInit {
   arr = [];
   constructor(private ref: ChangeDetectorRef) {}
 
   ngOnInit() {
-    setInterval(() => {
-      this.ref.detectChanges();
-      this.arr = [Math.random()];
-    }, 1500);
+    // setInterval(() => {
+    //   this.ref.detectChanges();
+    //   this.arr = [Math.random()];
+    // }, 1500);
   }
 
   parent() {
