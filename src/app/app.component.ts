@@ -85,16 +85,16 @@ export class AppComponent implements OnInit {
     console.log();
   }
 
-  changeColor() {
-    setInterval(() => {
-      console.log('Color change detection1');
-      this.div.nativeElement.style.background = this.setRandomColor();
-    }, 50000);
-  }
+  // changeColor() {
+  //   setInterval(() => {
+  //     console.log('Color change detection1');
+  //     this.div.nativeElement.style.background = this.setRandomColor();
+  //   }, 50000);
+  // }
 
-  setRandomColor() {
-    return ['red', 'orange', 'yellow', 'green', 'blue', 'purple'][
-      (Math.random() * 6) | 0
-    ];
-  }
+  // setRandomColor() {
+  //   return ['red', 'orange', 'yellow', 'green', 'blue', 'purple'][
+  //     (Math.random() * 6) | 0
+  //   ];
+  // }
 }

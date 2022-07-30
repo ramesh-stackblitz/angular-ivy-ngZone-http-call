@@ -10,6 +10,14 @@ export class ParentComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+    
   }
+
+  parent() {
+    console.log("parent");
+    return 'parent'
+  }
+
+  
 
 }
