@@ -9,6 +9,9 @@ import {
 import { ServiceAppService } from './service-app.service';
 import { Subscriber } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { fromFetch } from 'rxjs/fetch';
+import { tap } from 'rxjs/operators';
+import { ajax } from 'rxjs/ajax';
 import {
   FormGroup,
   FormControlName,
@@ -51,6 +54,9 @@ export class AppComponent implements OnInit {
     // this.service.getJson().subscribe((data) => {
     //   console.log(data);
     // });
+    this.loadingApiAjax();
+
+    this.loadingFetch();
 
     this.loginForm = this.fb.group({
       name: ['', [Validators.required]],
@@ -71,6 +77,29 @@ export class AppComponent implements OnInit {
     });
   }
 
+  loadingFetch() {
+    let results: any = [];
+    // let data$ = fromFetch("https://jsonplaceholder.typicode.com/posts"),{
+    //   selector: response => response.json()
+    // });
+    const data$ = fromFetch('https://jsonplaceholder.typicode.com/posts', {
+      selector: (response) => response.json(),
+    });
+
+    data$.subscribe((x) => {
+      console.log(x.json());
+    });
+    //var x = data.subscribe(x => x);
+
+    //console.log("results", x.json());
+  }
+
+  loadingApiAjax() {
+    const data$ = ajax('https://jsonplaceholder.typicode.com/posts').pipe(tap());
+    data$.subscribe(x => {
+      console.log("Ajax call", x.response);
+    })
+  }
   loadFun() {
     this.http
       .get('https://jsonplaceholder.typicode.com/todos/1')
